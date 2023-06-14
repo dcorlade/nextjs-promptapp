@@ -1,66 +1,61 @@
-import Link from'next/link';
+import Link from "next/link";
 
-
-const Form = ({
-type, post, setPost, submitting, handleSubmit
-}) => {
+const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
-    <section className='w-full max-w-full flex-start flex-col'>
-      <h1 className='head_text text-left'>
-        <span className='blue_gradient'>
-          {type} Post
-        </span>
+    <section className="w-full max-w-full flex-start flex-col">
+      <h1 className="head_text text-left">
+        <span className="blue_gradient">{type} Post</span>
       </h1>
-      <p className='desc text-left max-w-md'>
+      <p className="desc text-left max-w-md">
         {type} and share amazing prompts with the world!
       </p>
 
       <form
         onSubmit={handleSubmit}
-        className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
+        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
         <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>Your AI Prompt</span>
-          <textarea 
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Your AI Prompt
+          </span>
+          <textarea
             value={post.prompt}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value})} // update the prompt of the post
-            placeholder='Write your prompt here...'
+            onChange={(e) => setPost({ ...post, prompt: e.target.value })} // update the prompt of the post
+            placeholder="Write your prompt here..."
             required
-            className='form_textarea'
+            className="form_textarea"
           />
         </label>
         <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
             Tag {` `}
-            <span className='font-normal'> (#webdevelopment, #idea)</span>
+            <span className="font-normal"> (#webdevelopment, #idea)</span>
           </span>
-          <input 
+          <input
             value={post.tag}
-            onChange={(e) => setPost({ ...post, tag: e.target.value})} // update the prompt of the post
-            placeholder='#tag'
+            onChange={(e) => setPost({ ...post, tag: e.target.value })} // update the prompt of the post
+            placeholder="#tag"
             required
-            className='form_input'
+            className="form_input"
           />
         </label>
 
-        <div className='flex-end mx-3 mb-2 gap-4'>
-          <Link href='/' className='text-gray-500 text-sm'>
+        <div className="flex-end mx-3 mb-2 gap-4">
+          <Link href="/" className="text-gray-500 text-sm">
             Cancel
           </Link>
 
-          <button 
-            type='submit'
+          <button
+            type="submit"
             disabled={submitting}
-            className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
           >
-              {submitting ? `${type}...` : type}
+            {submitting ? `${type}...` : type}
           </button>
         </div>
       </form>
-
     </section>
-    
-  )
-}
+  );
+};
 
-export default Form
+export default Form;
