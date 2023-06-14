@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 import User from "@models/User";
-import { ConnectToDatabase } from "@utils/database";
+import { connectToDB } from "@utils/database";
 
 const handler = NextAuth({
   providers: [
@@ -23,7 +23,7 @@ const handler = NextAuth({
     async signIn({ profile }) {
       try {
         //route is serverless -> lambda that everytime it gets called, make connection to database
-        await ConnectToDatabase();
+        await connectToDB();
 
         // check if user already exists,
         const userExists = await User.findOne({ email: profile.email });
