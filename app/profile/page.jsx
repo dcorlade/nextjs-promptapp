@@ -9,7 +9,7 @@ import Profile from "@components/Profile";
 const MyProfile = () => {
   const { data: session } = useSession();
 
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
     const response = await fetch(`/api/users/${session?.user.id}/posts`);
