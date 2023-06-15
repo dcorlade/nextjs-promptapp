@@ -60,7 +60,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         // click tag to show the same tags from other prompts
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
-        {post.tag}
+        #{post.tag}
       </p>
 
       {session?.user._id === post.creator.id && pathName === "/profile" && (
